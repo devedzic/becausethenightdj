@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performers</title>
+</head>
+<body>
+    {% if performer_list %} <!-- alias for object_list (passed by ListView); either will work -->
+{#    {% if object_list %} <!-- good alternative; it is more universal and works for different models -->#}
+        <ul>
+        {% for performer in performer_list %}
+{#        {% for performer in object_list %} <!-- good alternative, if object_list is used above as well -->#}
+
+{#            <li><a href="{% url 'performer-list' performer.pk %}">{{ performer.name }}</a></li> <!--doesn't work-->#}
+{#            <li><a href="/music/performers/{{ performer.pk }}/">{{ performer.name }}</a></li> <!--inflexible--> #}
+            <li><a href="{% url 'performer-detail' performer.pk %}">{{ performer.name }}</a></li>
+{#            <li><a href="{{ performer.get_absolute_url }}">{{ performer.name }}</a></li> <!--good alternative-->#}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No performers are available.</p>
+    {% endif %}
+</body>
+</html>
