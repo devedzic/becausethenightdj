@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Performer</title>
-</head>
-<body>
-{#    <p>Performer: {{ performer.name }}, {{ performer.musician_or_band }}</p>#}
-{#    <p>Performer: {{ performer }}</p>#}
+{% extends "base_generic.html" %}
 
-{#    <h3>{{ performer }}</h3>#}
-    <p>{{ performer }}</p>  <!-- alias for (the more universal) object (passed by DetailView) -->
+{% block content %}
+    {% include 'music/common.html' %}
+    <p>Details about the performer requested:</p>
+    <h4>{{ performer }}</h4>
+{#    <p>{{ performer }}</p>  <!-- alias for (the more universal) object (passed by DetailView) -->#}
 {#    <p>{{ object }}</p>     <!-- good alternative; it is more universal and works for different models -->#}
-</body>
-</html>
+    <p>Related songs:</p>
+    {% for song in performer.song_set.all %}
+        <li>
+            <a href="{{ song.get_absolute_url }}">{{ song.title }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}

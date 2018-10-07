@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}              <!-- added subsequently, in order to allow for inserting images -->
+
+{% block content %}
+    <h1>Because the Night</h1>
+    <p>Welcome to <em>Because the Night</em>, a simple Website developed in honor of that legendary song :)</p>
+
+    <img src="{% static 'images/patti.jpg'%}" alt="">   <!-- added subsequently (music/static/images/patti.jpg) -->
+    <br>
+    <br>
+    <hr>
+
+    <h2>Dynamic content</h2>
+    <br>
+    <p>The site has the following record counts:</p>
+    <ul>
+        <li><strong>Performers:</strong> {{ num_performers }}</li>
+        {#    <li><strong>Copies:</strong> {{ num_instances }}</li>#}
+        {#    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>#}
+        {#    <li><strong>Authors:</strong> {{ num_authors }}</li>#}
+    </ul>
+{% endblock %}

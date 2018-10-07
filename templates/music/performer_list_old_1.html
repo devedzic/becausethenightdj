@@ -1,10 +1,12 @@
-{% extends "base_generic.html" %}
-
-{% block content %}
-    {% include 'music/common.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performers</title>
+</head>
+<body>
     {% if performer_list %} <!-- alias for object_list (passed by ListView); either will work -->
 {#    {% if object_list %} <!-- good alternative; it is more universal and works for different models -->#}
-        <p>The site has records of the following performers:</p>
         <ul>
         {% for performer in performer_list %}
 {#        {% for performer in object_list %} <!-- good alternative, if object_list is used above as well -->#}
@@ -18,4 +20,5 @@
     {% else %}
         <p>No performers are available.</p>
     {% endif %}
-{% endblock %}
+</body>
+</html>

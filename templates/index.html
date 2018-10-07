@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% include 'music/common.html' %}
+    <p>The site has the following record counts:</p>
+    <ul>
+        <li><strong>Performers:</strong> {{ num_performers }}</li>
+        <li><strong>Songs:</strong> {{ num_songs }}</li>
+        {#    <li><strong>Copies:</strong> {{ num_instances }}</li>#}
+        {#    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>#}
+        {#    <li><strong>Authors:</strong> {{ num_authors }}</li>#}
+    </ul>
+{% endblock %}

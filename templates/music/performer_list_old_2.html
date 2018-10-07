@@ -1,7 +1,17 @@
 {% extends "base_generic.html" %}
+{% load staticfiles %}              <!-- added subsequently, in order to allow for inserting images -->
 
 {% block content %}
-    {% include 'music/common.html' %}
+    <h1>Because the Night</h1>
+    <p>Welcome to <em>Because the Night</em>, a simple Website developed in honor of that legendary song :)</p>
+
+    <img src="{% static 'images/patti.jpg'%}" alt="">   <!-- added subsequently (music/static/images/patti.jpg) -->
+    <br>
+    <br>
+    <hr>
+
+    <h2>Dynamic content</h2>
+    <br>
     {% if performer_list %} <!-- alias for object_list (passed by ListView); either will work -->
 {#    {% if object_list %} <!-- good alternative; it is more universal and works for different models -->#}
         <p>The site has records of the following performers:</p>

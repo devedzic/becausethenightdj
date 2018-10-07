@@ -15,3 +15,11 @@ urlpatterns += [
     path('performers/<int:pk>/', views.PerformerDetailView.as_view(), name='performer-detail')
 ]
 
+urlpatterns += [
+    path('songs/', views.SongListView.as_view(), name='song-list')
+]
+
+urlpatterns += [
+    path('songs/<int:pk>/', views.SongDetailView.as_view(), name='song-detail')
+]
+

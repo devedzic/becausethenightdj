@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% include 'music/common.html' %}
+    {% if song_list %} <!-- alias for object_list (passed by ListView); either will work -->
+{#    {% if object_list %} <!-- good alternative; it is more universal and works for different models -->#}
+        <p>The site has records of the following songs:</p>
+        <ul>
+        {% for song in song_list %}
+{#        {% for song in object_list %} <!-- good alternative, if object_list is used above as well -->#}
+
+{#            <li><a href="{% url 'song-list' song.pk %}">{{ song.title }}</a></li> <!--doesn't work-->#}
+{#            <li><a href="/music/songs/{{ song.pk }}/">{{ song.title }}</a></li> <!--inflexible--> #}
+            <li><a href="{% url 'song-detail' song.pk %}">{{ song.title }}</a></li>
+{#            <li><a href="{{ song.get_absolute_url }}">{{ song.title }}</a></li> <!--good alternative-->#}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No songs are available.</p>
+    {% endif %}
+{% endblock %}

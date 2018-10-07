@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% include 'music/common.html' %}
+    <p>Details about the song requested:</p>
+    <h5>{{ song.title }}</h5>
+    <p> <strong>Performer</strong>: {{ song.performer.name }}<br>
+        <strong>Time</strong>: {{ song.time.minute }}:{{ song.time.second }}<br>
+        <strong>Released</strong>: {{ song.format_release_date }}
+    </p>
+    {#    <p><strong>Time</strong>: {{ song.time.minute }}:{{ song.time.second }}</p>#}
+    {#    <p><strong>Released</strong>: {{ song.format_release_date }}</p>#}
+    {#    <h4>{{ song }}</h4>#}
+    {#    <p>{{ song }}</p>  <!-- alias for (the more universal) object (passed by DetailView) -->#}
+    {#    <p>{{ object }}</p>     <!-- good alternative; it is more universal and works for different models -->#}
+{% endblock %}

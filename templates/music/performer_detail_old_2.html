@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}              <!-- added subsequently, in order to allow for inserting images -->
+
+{% block content %}
+    <h1>Because the Night</h1>
+    <p>Welcome to <em>Because the Night</em>, a simple Website developed in honor of that legendary song :)</p>
+
+    <img src="{% static 'images/patti.jpg'%}" alt="">   <!-- added subsequently (music/static/images/patti.jpg) -->
+    <br>
+    <br>
+    <hr>
+
+    <h2>Dynamic content</h2>
+    <br>
+    <p>Details about the performer requested:</p>
+    <h4>{{ performer }}</h4>
+{#    <p>{{ performer }}</p>  <!-- alias for (the more universal) object (passed by DetailView) -->#}
+{#    <p>{{ object }}</p>     <!-- good alternative; it is more universal and works for different models -->#}
+{% endblock %}
