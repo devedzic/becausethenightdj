@@ -1,8 +1,10 @@
+from django.forms import ModelForm, forms
 from django.shortcuts import render
 
 # Create your views here.
 
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.views import generic
 
 from .models import Performer, Song
@@ -26,7 +28,7 @@ def index(request):
 class PerformerListView(generic.ListView):
     model = Performer
     template_name = 'music/performer_list.html'
-    # paginate_by = 2                             # set to 2 to see the actual effects of pagination
+    paginate_by = 2                             # set to 2 to see the actual effects of pagination
 
     def get_queryset(self):                     # get list by overriding ListView.get_queryset(); this is typically done
         return Performer.objects.all()          # get all performers initially; objects.filter(...) can be used later
@@ -47,5 +49,36 @@ class SongListView(generic.ListView):
 
 class SongDetailView(generic.DetailView):
     model = Song
+
+
+class PerformerCreate(generic.CreateView):
+    model = Performer
+    fields = '__all__'
+    # initial = {'is_band': False}
+
+
+class PerformerUpdate(generic.UpdateView):
+    model = Performer
+    fields = ['name', 'is_band']
+
+
+class PerformerDelete(generic.DeleteView):
+    model = Performer
+    success_url = reverse_lazy('performer-list')
+
+
+class SongCreate(generic.CreateView):
+    model = Song
+    fields = '__all__'
+
+
+class SongUpdate(generic.UpdateView):
+    model = Song
+    fields = ['title', 'time', 'performer', 'release_date']
+
+
+class SongDelete(generic.DeleteView):
+    model = Song
+    success_url = reverse_lazy('song-list')
 
 
