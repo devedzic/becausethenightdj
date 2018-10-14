@@ -1,5 +1,10 @@
 {% extends "base_generic.html" %}
 
+{% block sidebar %}
+    {% include 'music/common_sidebar.html' %}
+    <p><a href="{% url 'performer_create' %}">Add performer</a></p>
+{% endblock %}
+
 {% block content %}
     {% include 'music/common.html' %}
     {% if performer_list %} <!-- alias for object_list (passed by ListView); either will work -->

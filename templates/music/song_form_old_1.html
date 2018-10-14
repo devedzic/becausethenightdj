@@ -1,12 +1,6 @@
 {% extends "base_generic.html" %}
 
-{% block sidebar %}
-    {% include 'music/common_sidebar.html' %}
-{% endblock %}
-
 {% block content %}
-    {% include 'music/common.html' %}
-    <p>Create/Update performer:</p>
     <form action="" method="post">
         {% csrf_token %}
         <table>

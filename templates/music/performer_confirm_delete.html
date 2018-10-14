@@ -1,10 +1,16 @@
 {% extends "base_generic.html" %}
 
+{% block sidebar %}
+    {% include 'music/common_sidebar.html' %}
+{% endblock %}
+
 {% block content %}
 
-    <h1>Delete performer</h1>
+    {% include 'music/common.html' %}
 
-    <p>Are you sure you want to delete the performer: {{ performer }}?</p>
+    <p>Delete performer: {{ performer }} <br>
+        Are you sure?
+    </p>
 
     <form action="" method="POST">
         {% csrf_token %}

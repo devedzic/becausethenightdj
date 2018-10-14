@@ -1,5 +1,13 @@
 {% extends "base_generic.html" %}
 
+{% block sidebar %}
+    {% include 'music/common_sidebar.html' %}
+    <p>
+        <a href="{% url 'performer_update' performer.pk %}">Update performer</a> <br>
+        <a href="{% url 'performer_delete' performer.pk %}">Delete performer</a>
+    </p>
+{% endblock %}
+
 {% block content %}
     {% include 'music/common.html' %}
     <p>Details about the performer requested:</p>
@@ -7,9 +15,13 @@
 {#    <p>{{ performer }}</p>  <!-- alias for (the more universal) object (passed by DetailView) -->#}
 {#    <p>{{ object }}</p>     <!-- good alternative; it is more universal and works for different models -->#}
     <p>Related songs:</p>
-    {% for song in performer.song_set.all %}
-        <li>
-            <a href="{{ song.get_absolute_url }}">{{ song.title }}</a>
-        </li>
-    {% endfor %}
+    {% if performer.song_set.all %}
+        {% for song in performer.song_set.all %}
+            <li>
+                <a href="{{ song.get_absolute_url }}">{{ song.title }}</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>No</p>
+    {% endif %}
 {% endblock %}

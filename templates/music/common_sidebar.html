@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Common sidebar</title>
+</head>
+<body>
+
+    {% load staticfiles %}              <!-- added subsequently, in order to allow for inserting images -->
+
+    <ul class="sidebar-nav">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'performer-list' %}">All performers</a></li>
+        <li><a href="{% url 'song-list' %}">All songs</a></li>
+    </ul>
+
+</body>
+</html>
