@@ -8,7 +8,8 @@ from django.urls import reverse
 
 
 class Performer(models.Model):
-    """The model representing performers."""
+    """The model representing performers.
+    """
 
     musician_or_band = [
         [False, 'musician'],
@@ -24,8 +25,7 @@ class Performer(models.Model):
         return self.name + ' (band)' if self.is_band else self.name + ' (musician)'
 
     def get_absolute_url(self):
-        """
-        Returns the url to access a particular performer instance.
+        """Returns the URL to access a particular performer instance.
         Enables specific Performer pages in admin to include "View on site" button.
         """
 
@@ -33,7 +33,8 @@ class Performer(models.Model):
 
 
 class Song(models.Model):
-    """The model representing songs."""
+    """The model representing songs.
+    """
 
     title = models.CharField(max_length=100)
     time = models.TimeField(null=True, blank=True,
@@ -44,7 +45,8 @@ class Song(models.Model):
     release_date = models.DateField(null=True, blank=True)
 
     def format_release_date(self):
-        """Converts a date from datetime.date() to a string of the form '<month> <day>, <year>'."""
+        """Converts a date from datetime.date() to a string of the form '<month> <day>, <year>'.
+        """
 
         if isinstance(self.release_date, datetime.date):
             return self.release_date.strftime("%b %d, %Y")
@@ -58,8 +60,7 @@ class Song(models.Model):
                '\t' + 'released: ' + str(self.release_date)
 
     def get_absolute_url(self):
-        """
-        Returns the url to access a particular song instance.
+        """Returns the URL to access a particular song instance.
         Enables specific Song pages in admin to include "View on site" button.
         """
 
